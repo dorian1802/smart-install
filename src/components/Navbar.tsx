@@ -42,13 +42,11 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link, i) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
-                i === 0 ? "text-brand" : "text-muted-foreground hover:text-brand"
-              }`}
+              className="text-sm font-medium transition-colors text-muted-foreground hover:text-brand"
             >
               {link.label}
             </Link>
