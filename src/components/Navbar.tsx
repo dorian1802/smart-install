@@ -61,22 +61,24 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden p-2 text-foreground"
+          className={`md:hidden p-2 rounded-lg transition-colors ${
+            scrolled ? "text-charcoal hover:bg-charcoal/10" : "text-brand hover:bg-brand/10"
+          }`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {menuOpen ? <X className="w-6 h-6 text-charcoal" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-border">
-          <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden sticky top-0 bg-charcoal border-t border-brand/20">
+          <div className="container mx-auto px-6 py-6 flex flex-col gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground py-2"
+                className="text-sm font-medium text-white/70 hover:text-brand transition-colors py-1"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -84,7 +86,7 @@ export default function Navbar() {
             ))}
             <a
               href="tel:+32460228100"
-              className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-charcoal rounded-lg px-6 py-3 text-sm font-semibold"
+              className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-charcoal rounded-lg px-6 py-3 text-sm font-semibold mt-2"
             >
               <Phone className="w-4 h-4" />
               +32 460 22 81 00
